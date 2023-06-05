@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentFormPage"
+             Title="Add friend"
+             Padding="50,25">
+
+    <TableView Intent="Form">
+        <TableRoot>
+            <TableSection Title="Personal details">
+                <EntryCell Label="First name" />
+                <EntryCell Label="Middle name" />
+                <EntryCell Label="Last name" />
+
+                <ViewCell>
+                    <VerticalStackLayout >
+                        <Label FontAttributes="Bold" Grid.Row="0" Grid.Column="0" Text="Date of birth"/>
+                        <DatePicker Grid.Row="0" Grid.Column="1"/>
+                    </VerticalStackLayout>
+                </ViewCell>
+            </TableSection>
+
+        
+            <TableSection Title="Roulette">
+                
+
+                <ViewCell>
+                    <Border Padding="25,25">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="150">
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Start">
+                                <Label FontAttributes="Bold" Text="Times chosen"/>
+                                <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Label FontAttributes="Bold" Text="Mantra" HorizontalTextAlignment="Center" />
+                                <Editor VerticalTextAlignment="Center" HorizontalTextAlignment="Center" MinimumWidthRequest="300" HeightRequest="100"/>
+                            </VerticalStackLayout>
+    
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="End">
+                                <Label FontAttributes="Bold" Text="Currently present" />
+                            <Switch />
+                        </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>
