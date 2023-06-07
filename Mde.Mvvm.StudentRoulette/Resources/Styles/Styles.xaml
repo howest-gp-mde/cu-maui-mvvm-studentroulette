@@ -4,6 +4,52 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Style TargetType="Grid">
+        <Setter Property="RowSpacing" Value="14"></Setter>
+    </Style>
+
+    <Style TargetType="ScrollView">
+        <Setter Property="Padding" Value="56, 28"></Setter>
+    </Style>
+    
+    <Style x:Key="FormLabelLeft" TargetType="Label">
+        <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalOptions" Value="Start"></Setter>
+        <Setter Property="FontAttributes" Value="Italic"></Setter>
+    </Style>
+
+    <Style x:Key="FormLabelRight" TargetType="Label">
+        <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalOptions" Value="End"></Setter>
+        <Setter Property="FontAttributes" Value="Italic"></Setter>
+    </Style>
+
+    <Style x:Key="FormLabelTop" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+        <Setter Property="FontAttributes" Value="Italic"></Setter>
+    </Style>
+
+    <Style x:Key="StatusIndicator" TargetType="BoxView">
+        <Setter Property="WidthRequest" Value="20"></Setter>
+        <Setter Property="HeightRequest" Value="20"></Setter>
+        <Setter Property="VerticalOptions" Value="Center"></Setter>
+        <Setter Property="HorizontalOptions" Value="Center"></Setter>
+        <Setter Property="CornerRadius" Value="50"></Setter>
+    </Style>
+
+    <Style x:Key="Accent" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Italic"></Setter>
+        <Setter Property="FontSize" Value="10"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource Tertiary}"></Setter>
+    </Style>
+
+    <Style x:Key="TitleStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="Title"></Setter>
+        <Setter Property="Padding" Value="0,14,0,14"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+    </Style>
+
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
@@ -14,6 +60,7 @@
     </Style>
 
     <Style TargetType="Border">
+        <Setter Property="Padding" Value="14"></Setter>
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="StrokeShape" Value="Rectangle"/>
         <Setter Property="StrokeThickness" Value="1"/>
