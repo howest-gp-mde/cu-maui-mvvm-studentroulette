@@ -4,67 +4,77 @@
              x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentFormPage"
              Title="Add friend">
 
-    <ScrollView>
-        <VerticalStackLayout>
-            <Border>
-                <Grid ColumnDefinitions=".9*, .1*" RowDefinitions="Auto">
-                    <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                        <Label Text="John Deere Doe (picked 2 times)" />
-                        <Label Style="{StaticResource Accent}"
-                               Text="I&apos;ve always known I&apos;m the chosen one!" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="save"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions=".85*,.15*" ColumnDefinitions="*">
+        <ScrollView Grid.Row="0" Grid.Column="0">
+            <VerticalStackLayout>
+
+                <Label Style="{StaticResource TitleStyle}">Roulette settings</Label>
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto">
+
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="mantra" Style="{StaticResource FormLabelTop}" />
+                        <Editor HorizontalTextAlignment="Center" HeightRequest="75"
+                            Placeholder="Type the students mantra when being chosen here. E.g.: &quot;I&apos;ve always known I&apos;m the chosen one!&quot;"/>
                     </VerticalStackLayout>
-                    <BoxView Grid.Row="0" Grid.Column="1"
-                             Style="{StaticResource StatusIndicator}" 
-                             Color="Green"></BoxView>
+
+                    <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Start">
+                        <Label Text="times chosen" Style="{StaticResource FormLabelLeft}" />
+                        <Entry HorizontalTextAlignment="Center" Placeholder="2 (times)" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                        <Label Text="currently present" Style="{StaticResource FormLabelRight}" />
+                        <CheckBox IsChecked="True" HorizontalOptions="End"/>
+                    </VerticalStackLayout>
                 </Grid>
-            </Border>
 
-            <Label Style="{StaticResource TitleStyle}">Personal details</Label>
-            <Grid ColumnDefinitions="100,*" RowDefinitions="Auto, Auto, Auto, Auto">
+                <Label Style="{StaticResource TitleStyle}">Personal details</Label>
+                <Grid ColumnDefinitions="100,*" RowDefinitions="Auto, Auto, Auto, Auto">
 
-                <Label Grid.Row="0" Grid.Column="0" 
-                       Text="First name:"
+                    <Label Grid.Row="0" Grid.Column="0" 
+                       Text="first name"
                    Style="{StaticResource FormLabelLeft}" />
-                <Entry Grid.Row="0" Grid.Column="1" 
+                    <Entry Grid.Row="0" Grid.Column="1"
                        Placeholder="John" />
 
-                <Label Text="Middle name:"
+                    <Label Text="middle name"
                        Style="{StaticResource FormLabelLeft}" 
                        Grid.Row="1" Grid.Column="0" />
-                <Entry Grid.Row="1" Grid.Column="1" 
+                    <Entry Grid.Row="1" Grid.Column="1"
                        Placeholder="Deere" />
-                
-                <Label Text="Last name:"
+
+                    <Label Text="last name"
                        Grid.Row="2" Grid.Column="0" 
                        Style="{StaticResource FormLabelLeft}" />
-                <Entry Grid.Row="2" Grid.Column="1" 
+                    <Entry Grid.Row="2" Grid.Column="1" 
                        Placeholder="Doe" />
 
-                <Label Text="Birthday:"
+                    <Label Text="birthday"
                        Style="{StaticResource FormLabelLeft}"
                        Grid.Row="3" Grid.Column="0" />
-                <DatePicker Grid.Row="3" Grid.Column="1" />
-            </Grid>
+                    <DatePicker Grid.Row="3" Grid.Column="1" />
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
 
-            <Label Style="{StaticResource TitleStyle}">Roulette</Label>
-            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto">
-
-                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Label Text="Mantra:" Style="{StaticResource FormLabelTop}" />
-                    <Editor HorizontalTextAlignment="Center" HeightRequest="100"
-                            Placeholder="Type the students mantra when being chosen here.&#x0a;E.g.: &quot;I&apos;ve always known I&apos;m the chosen one!&quot;"/>
+        <VerticalStackLayout Grid.Row="1" Grid.Column="0" Padding="14,0">
+            <Label TextColor="{StaticResource Tertiary}" FontAttributes="Bold">Preview</Label>
+            <Grid  ColumnDefinitions=".8*, .2*" RowDefinitions="Auto">
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                    <Label Text="John Deere Doe (picked 2 times)" />
+                    <Label Style="{StaticResource Accent}"
+                           Text="I&apos;ve always known I&apos;m the chosen one!" />
                 </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Start">
-                    <Label Text="Times chosen:" Style="{StaticResource FormLabelLeft}" />
-                    <Entry HorizontalTextAlignment="Center" Placeholder="2 (times)" />
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                    <Label Text="Currently present:" Style="{StaticResource FormLabelRight}" />
-                    <CheckBox HorizontalOptions="End"/>
-                </VerticalStackLayout>
+                <BoxView Grid.Row="0" Grid.Column="1"
+                         Style="{StaticResource StatusIndicator}" 
+                         Color="Green"
+                         HorizontalOptions="End"></BoxView>
             </Grid>
         </VerticalStackLayout>
-    </ScrollView>
+
+    </Grid>
 </ContentPage>
