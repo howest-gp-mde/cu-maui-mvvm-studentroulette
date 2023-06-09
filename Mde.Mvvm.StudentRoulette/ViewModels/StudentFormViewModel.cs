@@ -25,6 +25,16 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             }
         }
 
+        private bool isPresent;
+        public bool IsPresent
+        {
+            get { return isPresent; }
+            set
+            {
+                SetProperty(ref isPresent, value);
+            }
+        }
+
         /* 2. Example of why you might need the long notation:
          * if the FirstName, MiddleName or LastName changes, we immediately want to notify
          * that the FullName has changed, too.*/
