@@ -6,12 +6,32 @@
              x:DataType="viewmodels:StudentFormViewModel"
              Title="Add friend">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="save"></ToolbarItem>
-    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*" RowSpacing="0">
 
-    <Grid RowDefinitions=".85*,.15*" ColumnDefinitions="*">
-        <ScrollView Grid.Row="0" Grid.Column="0">
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="14" BackgroundColor="{StaticResource Secondary}">
+            <Label TextColor="{StaticResource Tertiary}" FontAttributes="Bold">Preview</Label>
+            <Grid  ColumnDefinitions="40, *" RowDefinitions="Auto">
+                <BoxView Grid.Row="0" Grid.Column="0"
+                         Style="{StaticResource StatusIndicator}" 
+                         Color="Green"
+                         HorizontalOptions="Start"></BoxView>
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding FullName}"></Span>
+                                <Span Text=" "></Span>
+                                <Span Text="{Binding NumberOfTimesChosen}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Style="{StaticResource Accent}"
+                           Text="{Binding Mantra}" />
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1" Grid.Column="0">
             <VerticalStackLayout>
 
                 <Label Style="{StaticResource TitleStyle}">Roulette settings</Label>
@@ -65,32 +85,12 @@
                     <Label Text="birthday"
                        Style="{StaticResource FormLabelLeft}"
                        Grid.Row="3" Grid.Column="0" />
-                    <DatePicker Grid.Row="3" Grid.Column="1" />
+                    <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding Birthday}" />
                 </Grid>
+
+                <Button Text="Save" Margin="{StaticResource DefaultThickness}"></Button>
             </VerticalStackLayout>
         </ScrollView>
-
-        <VerticalStackLayout Grid.Row="1" Grid.Column="0" Padding="14,0">
-            <Label TextColor="{StaticResource Tertiary}" FontAttributes="Bold">Preview</Label>
-            <Grid  ColumnDefinitions=".8*, .2*" RowDefinitions="Auto">
-                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding FullName}"></Span>
-                                <Span Text="{Binding NumberOfTimesChosen}"></Span>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label Style="{StaticResource Accent}"
-                           Text="{Binding Mantra}" />
-                </VerticalStackLayout>
-                <BoxView Grid.Row="0" Grid.Column="1"
-                         Style="{StaticResource StatusIndicator}" 
-                         Color="Green"
-                         HorizontalOptions="End"></BoxView>
-            </Grid>
-        </VerticalStackLayout>
 
     </Grid>
 </ContentPage>
