@@ -1,4 +1,8 @@
-﻿namespace Mde.Mvvm.StudentRoulette;
+﻿using Mde.Mvvm.StudentRoulette.Pages;
+using Mde.Mvvm.StudentRoulette.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Mde.Mvvm.StudentRoulette;
 
 public static class MauiProgram
 {
@@ -12,6 +16,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddTransient<StudentFormPage>();
+		builder.Services.AddTransient<StudentFormViewModel>();
 
 		return builder.Build();
 	}
