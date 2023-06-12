@@ -21,7 +21,7 @@
                             <FormattedString>
                                 <Span Text="{Binding FullName}"></Span>
                                 <Span Text=" "></Span>
-                                <Span Text="{Binding NumberOfTimesChosen}"></Span>
+                                <Span Text="{Binding NumberOfTimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}"></Span>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

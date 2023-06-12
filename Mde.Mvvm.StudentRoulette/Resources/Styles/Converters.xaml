@@ -6,5 +6,6 @@
     xmlns:converters="clr-namespace:Mde.Mvvm.StudentRoulette.Converters">
 
     <converters:BoolToPresenceConverter x:Key="BoolToPresenceConverter"/>
+    <converters:IntToTimesChosenStringConverter x:Key="IntToTimesChosenStringConverter"/>
 
 </ResourceDictionary>
