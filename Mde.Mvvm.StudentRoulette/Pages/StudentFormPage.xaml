@@ -88,7 +88,9 @@
                     <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding Birthday}" />
                 </Grid>
 
-                <Button Text="Save" Margin="{StaticResource DefaultThickness}"></Button>
+                <Button Text="Save" 
+                        Command="{Binding SaveCommand}"
+                        Margin="{StaticResource DefaultThickness}"></Button>
             </VerticalStackLayout>
         </ScrollView>
 

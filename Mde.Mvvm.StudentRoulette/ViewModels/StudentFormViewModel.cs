@@ -1,4 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Mde.Mvvm.StudentRoulette.Domain.Models;
+using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
+using System.Windows.Input;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
@@ -78,6 +82,8 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         }
 
         private DateTime birthday = new DateTime(2000, 1, 1);
+        private readonly IStudentService studentService;
+
         public DateTime Birthday
         {
             get { return birthday; }
@@ -101,5 +107,27 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 return string.Join(" ", namepieces);
             }
         }
+
+        public StudentFormViewModel(IStudentService studentService)
+        {
+            this.studentService = studentService;
+        }
+
+        public ICommand SaveCommand => new Command(async () =>
+        {
+            //todo: validation
+            Student student = new Student
+            {
+                FirstName = FirstName,
+                MiddleName = MiddleName,
+                LastName = LastName,
+                Birthday = Birthday,
+                Mantra = Mantra,
+                TimesChosen = NumberOfTimesChosen
+            };
+
+            await studentService.SaveOrUpdate(student);
+
+        });
     }
 }
