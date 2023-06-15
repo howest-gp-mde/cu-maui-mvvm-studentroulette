@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mde.Mvvm.StudentRoulette.Domain.Models
 {
-    public class Student
+    public record class Student
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

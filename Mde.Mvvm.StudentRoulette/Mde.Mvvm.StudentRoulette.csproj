@@ -15,7 +15,7 @@
 		<ApplicationTitle>Roulette</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mde.mvvm.studentroulette</ApplicationId>
+		<ApplicationId>be.howest.prog.mde.studentroulette</ApplicationId>
 		<ApplicationIdGuid>8220107d-0598-464c-84e4-69e11a8ffc5b</ApplicationIdGuid>
 
 		<!-- Versions -->
