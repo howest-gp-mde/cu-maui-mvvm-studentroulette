@@ -6,8 +6,31 @@ using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
+    [QueryProperty(nameof(Student), nameof(Student))]
     public partial class StudentFormViewModel : ObservableObject
     {
+        private Student student;
+
+        public Student Student
+        {
+            get { return student; }
+            set 
+            {
+                //Set the private field
+                student = value;
+
+                //Update vm props for UI refresh
+                Mantra = value.Mantra;
+                NumberOfTimesChosen = value.TimesChosen;
+                IsPresent = value.IsPresent;
+                FirstName = value.FirstName;
+                MiddleName = value.MiddleName;
+                LastName = value.LastName;
+                Birthday = value.Birthday;
+            }
+        }
+
+
         /* 1. If the property has changed, SetProperty will notify the changes to the View */
         private string mantra;
         public string Mantra
@@ -116,7 +139,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            Student student = new Student
+            Student = Student with
             {
                 FirstName = FirstName,
                 MiddleName = MiddleName,
@@ -124,11 +147,13 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 Birthday = Birthday,
                 Mantra = Mantra,
                 TimesChosen = NumberOfTimesChosen,
-                IsPresent = IsPresent                
+                IsPresent = IsPresent
             };
 
-            await studentService.SaveOrUpdate(student);
+            var test = 1;
 
+            await studentService.SaveOrUpdate(student);
+            await Shell.Current.GoToAsync("//StudentListPage");
         });
     }
 }

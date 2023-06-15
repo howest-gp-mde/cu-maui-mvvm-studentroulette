@@ -10,9 +10,11 @@
     x:DataType="viewmodels:StudentListViewModel">
     <VerticalStackLayout>
         <ListView
+            x:Name="lstStudents"
             x:DataType="models:Student"
             HasUnevenRows="True"
-            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}">
+            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}"
+            ItemTapped="lstStudents_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
