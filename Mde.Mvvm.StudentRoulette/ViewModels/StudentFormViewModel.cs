@@ -123,7 +123,8 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 LastName = LastName,
                 Birthday = Birthday,
                 Mantra = Mantra,
-                TimesChosen = NumberOfTimesChosen
+                TimesChosen = NumberOfTimesChosen,
+                IsPresent = IsPresent                
             };
 
             await studentService.SaveOrUpdate(student);

@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentFormPage"
-             xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
-             x:DataType="viewmodels:StudentFormViewModel"
-             Title="Add friend">
+<ContentPage
+    x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentFormPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
+    Title="Add friend"
+    x:DataType="viewmodels:StudentFormViewModel">
 
-    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*" RowSpacing="0">
+    <Grid
+        ColumnDefinitions="*"
+        RowDefinitions="Auto,*"
+        RowSpacing="0">
 
-        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="14" BackgroundColor="{StaticResource Secondary}">
-            <Label TextColor="{StaticResource Tertiary}" FontAttributes="Bold">Preview</Label>
-            <Grid  ColumnDefinitions="40, *" RowDefinitions="Auto">
-                <BoxView Grid.Row="0" Grid.Column="0"
-                         Style="{StaticResource StatusIndicator}" 
-                         Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}"
-                         HorizontalOptions="Start"></BoxView>
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="0"
+            Padding="14"
+            BackgroundColor="{StaticResource Secondary}">
+            <Label FontAttributes="Bold" TextColor="{StaticResource Tertiary}">Preview</Label>
+            <Grid ColumnDefinitions="40, *" RowDefinitions="Auto">
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource StatusIndicator}"
+                    Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}" />
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1">
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding FullName}"></Span>
-                                <Span Text=" "></Span>
-                                <Span Text="{Binding NumberOfTimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}"></Span>
+                                <Span Text="{Binding FullName}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding NumberOfTimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource Accent}"
-                           Text="{Binding Mantra}" />
+                    <Label Style="{StaticResource Accent}" Text="{Binding Mantra}" />
                 </VerticalStackLayout>
             </Grid>
         </VerticalStackLayout>
@@ -37,60 +46,87 @@
                 <Label Style="{StaticResource TitleStyle}">Roulette settings</Label>
                 <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto">
 
-                    <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label Text="mantra" Style="{StaticResource FormLabelTop}" />
-                        <Editor HorizontalTextAlignment="Center" HeightRequest="75"
-                                Text="{Binding Mantra}"
-                                Placeholder="Type the students mantra when being chosen here. E.g.: &quot;I&apos;ve always known I&apos;m the chosen one!&quot;"/>
+                    <VerticalStackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        <Label Style="{StaticResource FormLabelTop}" Text="mantra" />
+                        <Editor
+                            HeightRequest="75"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Type the students mantra when being chosen here. E.g.: &quot;I&apos;ve always known I&apos;m the chosen one!&quot;"
+                            Text="{Binding Mantra}" />
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Start">
-                        <Label Text="times chosen" Style="{StaticResource FormLabelLeft}" />
-                        <Entry HorizontalTextAlignment="Center" Placeholder="2 (times)"
-                               Text="{Binding NumberOfTimesChosen}"
-                               Keyboard="Numeric" />
+                    <VerticalStackLayout
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="Start">
+                        <Label Style="{StaticResource FormLabelLeft}" Text="times chosen" />
+                        <Entry
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Placeholder="2 (times)"
+                            Text="{Binding NumberOfTimesChosen}" />
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                        <Label Text="currently present" Style="{StaticResource FormLabelRight}" />
-                        <CheckBox IsChecked="{Binding IsPresent}" HorizontalOptions="End"/>
+                        <Label Style="{StaticResource FormLabelRight}" Text="currently present" />
+                        <CheckBox HorizontalOptions="End" IsChecked="{Binding IsPresent}" />
                     </VerticalStackLayout>
                 </Grid>
 
                 <Label Style="{StaticResource TitleStyle}">Personal details</Label>
                 <Grid ColumnDefinitions="100,*" RowDefinitions="Auto, Auto, Auto, Auto">
 
-                    <Label Grid.Row="0" Grid.Column="0" 
-                           Text="first name"
-                           Style="{StaticResource FormLabelLeft}" />
-                    <Entry Grid.Row="0" Grid.Column="1"
-                           Placeholder="John"
-                           Text="{Binding FirstName}" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource FormLabelLeft}"
+                        Text="first name" />
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Placeholder="John"
+                        Text="{Binding FirstName}" />
 
-                    <Label Text="middle name"
-                           Style="{StaticResource FormLabelLeft}" 
-                           Grid.Row="1" Grid.Column="0" />
-                    <Entry Grid.Row="1" Grid.Column="1"
-                           Placeholder="Deere"
-                           Text="{Binding MiddleName}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource FormLabelLeft}"
+                        Text="middle name" />
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Placeholder="Deere"
+                        Text="{Binding MiddleName}" />
 
-                    <Label Text="last name"
-                           Grid.Row="2" Grid.Column="0" 
-                           Style="{StaticResource FormLabelLeft}"
-                           />
-                    <Entry Grid.Row="2" Grid.Column="1" 
-                           Placeholder="Doe"
-                           Text="{Binding LastName}"/>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource FormLabelLeft}"
+                        Text="last name" />
+                    <Entry
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Placeholder="Doe"
+                        Text="{Binding LastName}" />
 
-                    <Label Text="birthday"
-                       Style="{StaticResource FormLabelLeft}"
-                       Grid.Row="3" Grid.Column="0" />
-                    <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding Birthday}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Style="{StaticResource FormLabelLeft}"
+                        Text="birthday" />
+                    <DatePicker
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Date="{Binding Birthday}" />
                 </Grid>
 
-                <Button Text="Save" 
-                        Command="{Binding SaveCommand}"
-                        Margin="{StaticResource DefaultThickness}"></Button>
+                <Button
+                    Margin="{StaticResource DefaultThickness}"
+                    Command="{Binding SaveCommand}"
+                    Text="Save" />
             </VerticalStackLayout>
         </ScrollView>
 

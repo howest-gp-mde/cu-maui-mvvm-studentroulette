@@ -9,4 +9,10 @@ public partial class StudentListPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewmodel;
 	}
+
+    protected override void OnAppearing()
+    {
+        (BindingContext as StudentListViewModel).RefreshList?.Execute(null);
+        base.OnAppearing();
+    }
 }

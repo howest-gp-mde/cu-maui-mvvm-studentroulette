@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentListPage"
-             xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
-             x:DataType="viewmodels:StudentListViewModel"
-             Title="Students">
+<ContentPage
+    x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Mde.Mvvm.StudentRoulette.Domain.Models"
+    xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
+    x:Name="page"
+    Title="Students"
+    x:DataType="viewmodels:StudentListViewModel">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ListView
+            x:DataType="models:Student"
+            HasUnevenRows="True"
+            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout>
+                            <Grid Padding="{StaticResource DefaultThickness}" ColumnDefinitions="40, *">
+                                <BoxView
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource StatusIndicator}"
+                                    Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}" />
+                                <VerticalStackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FullName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding TimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Style="{StaticResource Accent}" Text="{Binding Mantra}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>
