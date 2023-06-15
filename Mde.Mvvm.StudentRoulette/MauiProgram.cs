@@ -21,6 +21,9 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<StudentFormPage>();
 		builder.Services.AddTransient<StudentFormViewModel>();
+		
+		builder.Services.AddTransient<StudentListPage>();
+		builder.Services.AddTransient<StudentListViewModel>();
 
 		builder.Services.AddTransient<IStudentService, JsonStudentService>();
 

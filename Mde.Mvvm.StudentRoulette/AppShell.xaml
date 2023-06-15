@@ -4,11 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Mde.Mvvm.StudentRoulette.Pages"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="Home"
+        Title="Students"
+        ContentTemplate="{DataTemplate local:StudentListPage}"
+        Route="StudentListPage" />
+    
+    <ShellContent
+        Title="Add"
         ContentTemplate="{DataTemplate local:StudentFormPage}"
-        Route="MainPage" />
+        Route="StudentFormPage" />
 
 </Shell>
