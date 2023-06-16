@@ -25,6 +25,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<StudentListPage>();
 		builder.Services.AddTransient<StudentListViewModel>();
 
+		Routing.RegisterRoute(nameof(StudentFormPage), typeof(StudentFormPage));
+
 		builder.Services.AddTransient<IStudentService, JsonStudentService>();
 
 		return builder.Build();

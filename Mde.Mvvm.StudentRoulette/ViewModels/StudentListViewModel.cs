@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Mde.Mvvm.StudentRoulette.Domain.Models;
 using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
+using Mde.Mvvm.StudentRoulette.Pages;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -38,10 +39,20 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 { nameof(Student), student }
             };
 
-            await Shell.Current.GoToAsync("//StudentFormPage", navigationParameter);
+            await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
+        });
+
+        public ICommand CreateStudentCommand => new Command<Student>(async (student) =>
+        {
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { nameof(Student), null }
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
         });
 
 
 
-	}
+    }
 }

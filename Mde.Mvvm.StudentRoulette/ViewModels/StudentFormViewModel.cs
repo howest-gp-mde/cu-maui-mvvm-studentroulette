@@ -2,7 +2,6 @@
 using Mde.Mvvm.StudentRoulette.Domain.Models;
 using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
 using System.Windows.Input;
-using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
@@ -10,26 +9,25 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
     public partial class StudentFormViewModel : ObservableObject
     {
         private Student student;
-
         public Student Student
         {
             get { return student; }
             set 
             {
-                //Set the private field
                 student = value;
 
-                //Update vm props for UI refresh
-                Mantra = value.Mantra;
-                NumberOfTimesChosen = value.TimesChosen;
-                IsPresent = value.IsPresent;
-                FirstName = value.FirstName;
-                MiddleName = value.MiddleName;
-                LastName = value.LastName;
-                Birthday = value.Birthday;
+                if (Student is not null)
+                {
+                    Mantra = value.Mantra;
+                    NumberOfTimesChosen = value.TimesChosen;
+                    IsPresent = value.IsPresent;
+                    FirstName = value.FirstName;
+                    MiddleName = value.MiddleName;
+                    LastName = value.LastName;
+                    Birthday = value.Birthday;
+                }
             }
         }
-
 
         /* 1. If the property has changed, SetProperty will notify the changes to the View */
         private string mantra;
@@ -104,7 +102,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             }
         }
 
-        private DateTime birthday = new DateTime(2000, 1, 1);
+        private DateTime birthday;
         private readonly IStudentService studentService;
 
         public DateTime Birthday
@@ -139,7 +137,20 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            Student = Student with
+            if (Student is null) Student = new Student();
+
+            //Student = Student with
+            //{
+            //    FirstName = FirstName,
+            //    MiddleName = MiddleName,
+            //    LastName = LastName,
+            //    Birthday = Birthday,
+            //    Mantra = Mantra,
+            //    TimesChosen = NumberOfTimesChosen,
+            //    IsPresent = IsPresent
+            //};
+
+            Student saveStudent = new Student()
             {
                 FirstName = FirstName,
                 MiddleName = MiddleName,
@@ -150,8 +161,9 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 IsPresent = IsPresent
             };
 
-            await studentService.SaveOrUpdate(student);
+            await studentService.SaveOrUpdate(saveStudent);
             await Shell.Current.GoToAsync("//StudentListPage");
+
         });
     }
 }

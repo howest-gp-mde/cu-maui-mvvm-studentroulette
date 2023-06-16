@@ -8,8 +8,9 @@
     x:Name="page"
     Title="Students"
     x:DataType="viewmodels:StudentListViewModel">
-    <VerticalStackLayout>
-        <ListView
+    <AbsoluteLayout>
+        <ListView AbsoluteLayout.LayoutFlags="SizeProportional" 
+                             AbsoluteLayout.LayoutBounds="0,0,1,1"
             x:Name="lstStudents"
             x:DataType="models:Student"
             HasUnevenRows="True"
@@ -47,5 +48,20 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+        <Button Text="+"
+                FontSize="Large"
+                CornerRadius="50"
+                AbsoluteLayout.LayoutFlags="PositionProportional" 
+                AbsoluteLayout.LayoutBounds=".5,.98,70,70"
+                Command="{Binding CreateStudentCommand}">
+            <Button.Shadow>
+                <Shadow Brush="{StaticResource Gray300}"
+                        Offset="10,10"
+                        Radius="1"
+                        Opacity="0.75" />
+            </Button.Shadow>
+            
+        </Button>
+    </AbsoluteLayout>
+    
 </ContentPage>
