@@ -5,6 +5,7 @@ using System.Windows.Input;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
+    [QueryProperty(nameof(Student), nameof(Student))]
     public partial class StudentFormViewModel : ObservableObject, IQueryAttributable
     {
         private Student student;
