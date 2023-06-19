@@ -36,7 +36,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(Student), student }
+                { "SelectedStudent", student }
             };
 
             await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
@@ -46,7 +46,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(Student), null }
+                { "SelectedStudent", null }
             };
 
             await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);

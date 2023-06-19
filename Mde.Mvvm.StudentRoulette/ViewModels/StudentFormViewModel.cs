@@ -5,16 +5,16 @@ using System.Windows.Input;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
-    [QueryProperty(nameof(Student), nameof(Student))]
+    [QueryProperty(nameof(SelectedStudent), nameof(SelectedStudent))]
     public partial class StudentFormViewModel : ObservableObject, IQueryAttributable
     {
-        private Student student;
-        public Student Student
+        private Student selectedStudent;
+        public Student SelectedStudent
         {
-            get { return student; }
+            get { return selectedStudent; }
             set 
             {
-                if (Student is not null)
+                if (SelectedStudent is not null)
                 {
                     Mantra = value.Mantra;
                     NumberOfTimesChosen = value.TimesChosen;
@@ -26,7 +26,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 }
                 else
                 {
-                    student = value;
+                    selectedStudent = value;
                 }
 
             }
@@ -140,7 +140,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            if (Student is null) Student = new Student();
+            if (SelectedStudent is null) SelectedStudent = new Student();
 
             //Student = Student with
             //{
@@ -171,9 +171,8 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            Student = query[nameof(Domain.Models.Student)] as Student;
-            OnPropertyChanged(nameof(Student));
+            SelectedStudent = query[nameof(SelectedStudent)] as Student;
+            OnPropertyChanged(nameof(SelectedStudent));
         }
-
     }
 }
