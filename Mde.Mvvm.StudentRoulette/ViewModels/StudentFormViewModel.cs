@@ -142,29 +142,23 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             //todo: validation
             if (SelectedStudent is null) SelectedStudent = new Student();
 
-            //Student = Student with
-            //{
-            //    FirstName = FirstName,
-            //    MiddleName = MiddleName,
-            //    LastName = LastName,
-            //    Birthday = Birthday,
-            //    Mantra = Mantra,
-            //    TimesChosen = NumberOfTimesChosen,
-            //    IsPresent = IsPresent
-            //};
+            SelectedStudent.FirstName = FirstName;
+            SelectedStudent.MiddleName = MiddleName;
+            SelectedStudent.LastName = LastName;
+            SelectedStudent.Birthday = Birthday;
+            SelectedStudent.Mantra = Mantra;
+            SelectedStudent.TimesChosen = NumberOfTimesChosen;
+            SelectedStudent.IsPresent = IsPresent;
 
-            Student saveStudent = new Student()
+            if (SelectedStudent.Id == Guid.Empty)
             {
-                FirstName = FirstName,
-                MiddleName = MiddleName,
-                LastName = LastName,
-                Birthday = Birthday,
-                Mantra = Mantra,
-                TimesChosen = NumberOfTimesChosen,
-                IsPresent = IsPresent
-            };
-
-            await studentService.SaveOrUpdate(saveStudent);
+                await studentService.Add(SelectedStudent);
+            }
+            else
+            {
+                await studentService.Update(SelectedStudent);
+            }
+            
             await Shell.Current.GoToAsync("//StudentListPage");
 
         });

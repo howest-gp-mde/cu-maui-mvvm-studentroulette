@@ -27,8 +27,26 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
 
             return existingStudent;
         }
+        public async Task<Student> Add(Student student)
+        {
+            List<Student> students = (await GetAll()).ToList();
+            bool studentExists = students.Any(search =>search.Id == student.Id);
 
-        public async Task<Student> SaveOrUpdate(Student student)
+            if (!studentExists)
+            {
+                student.Id = Guid.NewGuid();
+                students.Add(student);
+            }
+            else
+            {
+                throw new ArgumentException("The student you're trying to update already exists.");
+            }
+
+            await WriteStudents(students);
+            return student;
+        }
+
+        public async Task<Student> Update(Student student)
         {
             List<Student> students = (await GetAll()).ToList();
             Student existingStudent = students.FirstOrDefault(search =>
@@ -44,12 +62,10 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
             }
             else
             {
-                student.Id = Guid.NewGuid();
-                students.Add(student);
+                throw new ArgumentException("The student you're trying to update does not have a correct id.");
             }
 
-            string serializedStudents = JsonSerializer.Serialize(students);
-            await File.WriteAllTextAsync(targetFile, serializedStudents);
+            await WriteStudents(students);
             return student;
         }
 
@@ -59,6 +75,12 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
             {
                 File.WriteAllText(targetFile, JsonSerializer.Serialize(new List<Student>()));
             }
+        }
+
+        private async Task WriteStudents(List<Student> students)
+        {
+            string serializedStudents = JsonSerializer.Serialize(students);
+            await File.WriteAllTextAsync(targetFile, serializedStudents);
         }
     }
 }

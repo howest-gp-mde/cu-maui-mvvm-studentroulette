@@ -60,7 +60,6 @@
                         Radius="1"
                         Opacity="0.75" />
             </Button.Shadow>
-            
         </Button>
     </AbsoluteLayout>
     
