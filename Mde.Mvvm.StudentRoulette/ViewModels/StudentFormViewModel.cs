@@ -5,8 +5,7 @@ using System.Windows.Input;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
-    [QueryProperty(nameof(Student), nameof(Student))]
-    public partial class StudentFormViewModel : ObservableObject
+    public partial class StudentFormViewModel : ObservableObject, IQueryAttributable
     {
         private Student student;
         public Student Student
@@ -14,8 +13,6 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             get { return student; }
             set 
             {
-                student = value;
-
                 if (Student is not null)
                 {
                     Mantra = value.Mantra;
@@ -26,6 +23,11 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                     LastName = value.LastName;
                     Birthday = value.Birthday;
                 }
+                else
+                {
+                    student = value;
+                }
+
             }
         }
 
@@ -165,5 +167,12 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             await Shell.Current.GoToAsync("//StudentListPage");
 
         });
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            Student = query[nameof(Domain.Models.Student)] as Student;
+            OnPropertyChanged(nameof(Student));
+        }
+
     }
 }
