@@ -8,6 +8,7 @@
     x:Name="page"
     Title="Students"
     x:DataType="viewmodels:StudentListViewModel">
+
     <AbsoluteLayout>
         <ListView AbsoluteLayout.LayoutFlags="SizeProportional" 
                              AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -48,19 +49,43 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="+"
-                FontSize="Large"
-                CornerRadius="50"
-                AbsoluteLayout.LayoutFlags="PositionProportional" 
-                AbsoluteLayout.LayoutBounds=".5,.98,70,70"
-                Command="{Binding CreateStudentCommand}">
-            <Button.Shadow>
-                <Shadow Brush="{StaticResource Gray300}"
-                        Offset="10,10"
-                        Radius="1"
-                        Opacity="0.75" />
-            </Button.Shadow>
-        </Button>
+
+        <VerticalStackLayout AbsoluteLayout.LayoutFlags="SizeProportional"
+                             AbsoluteLayout.LayoutBounds="0,0,.95,.95"
+                             HorizontalOptions="End"
+                             VerticalOptions="End"
+                             Spacing="{StaticResource DefaultSpacing}">
+
+            <Button WidthRequest="50" HeightRequest="50"
+                    Text="+"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    CornerRadius="50"
+                    Command="{Binding CreateStudentCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="{StaticResource Gray300}"
+                                Offset="10,10"
+                                Radius="1"
+                                Opacity="0.75" />
+                    </Button.Shadow>
+            </Button>
+
+            <Button WidthRequest="50" HeightRequest="50"
+                    Text="🎲"
+                    FontSize="Medium"
+                    CornerRadius="50"
+                    Command="{Binding CreateStudentCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="{StaticResource Gray300}"
+                                Offset="10,10"
+                                Radius="1"
+                                Opacity="0.75" />
+                    </Button.Shadow>
+            </Button>
+        </VerticalStackLayout>
+
+
+
     </AbsoluteLayout>
-    
+
 </ContentPage>
