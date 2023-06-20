@@ -16,6 +16,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             {
                 selectedStudent = value;
 
+                //Sync Bindable Properties with incoming student
                 if (selectedStudent != null)
                 {
                     Mantra = selectedStudent.Mantra;
@@ -147,14 +148,15 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            Student student = null;
+            Student student;
+
             if (SelectedStudent == null)
             {
                 student = new Student();
             }
             else
             {
-                student = selectedStudent;
+                student = SelectedStudent;
             }
 
             student.FirstName = FirstName;
@@ -165,15 +167,13 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             student.TimesChosen = NumberOfTimesChosen;
             student.IsPresent = IsPresent;
 
-            SelectedStudent = student;
-
-            if (SelectedStudent.Id.Equals(Guid.Empty))
+            if (student.Id.Equals(Guid.Empty))
             {
-                await studentService.Add(SelectedStudent);
+                await studentService.Add(student);
             }
             else
             {
-                await studentService.Update(SelectedStudent);
+                await studentService.Update(student);
             }
             
             await Shell.Current.GoToAsync("//StudentListPage");
