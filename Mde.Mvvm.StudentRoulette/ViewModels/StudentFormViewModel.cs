@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
     [QueryProperty(nameof(SelectedStudent), nameof(SelectedStudent))]
-    public partial class StudentFormViewModel : ObservableObject, IQueryAttributable
+    public partial class StudentFormViewModel : ObservableObject
     {
         private Student selectedStudent;
         public Student SelectedStudent
@@ -14,21 +14,28 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             get { return selectedStudent; }
             set 
             {
-                if (SelectedStudent is not null)
+                selectedStudent = value;
+
+                if (selectedStudent != null)
                 {
-                    Mantra = value.Mantra;
-                    NumberOfTimesChosen = value.TimesChosen;
-                    IsPresent = value.IsPresent;
-                    FirstName = value.FirstName;
-                    MiddleName = value.MiddleName;
-                    LastName = value.LastName;
-                    Birthday = value.Birthday;
+                    Mantra = selectedStudent.Mantra;
+                    NumberOfTimesChosen = selectedStudent.TimesChosen;
+                    IsPresent = selectedStudent.IsPresent;
+                    FirstName = selectedStudent.FirstName;
+                    MiddleName = selectedStudent.MiddleName;
+                    LastName = selectedStudent.LastName;
+                    Birthday = selectedStudent.Birthday;
                 }
                 else
                 {
-                    selectedStudent = value;
+                    Mantra = default;
+                    NumberOfTimesChosen = default;
+                    IsPresent = default;
+                    FirstName = default;
+                    MiddleName = default;
+                    LastName = default;
+                    Birthday = default;
                 }
-
             }
         }
 
@@ -140,17 +147,27 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            if (SelectedStudent is null) SelectedStudent = new Student();
+            Student student = null;
+            if (SelectedStudent == null)
+            {
+                student = new Student();
+            }
+            else
+            {
+                student = selectedStudent;
+            }
 
-            SelectedStudent.FirstName = FirstName;
-            SelectedStudent.MiddleName = MiddleName;
-            SelectedStudent.LastName = LastName;
-            SelectedStudent.Birthday = Birthday;
-            SelectedStudent.Mantra = Mantra;
-            SelectedStudent.TimesChosen = NumberOfTimesChosen;
-            SelectedStudent.IsPresent = IsPresent;
+            student.FirstName = FirstName;
+            student.MiddleName = MiddleName;
+            student.LastName = LastName;
+            student.Birthday = Birthday;
+            student.Mantra = Mantra;
+            student.TimesChosen = NumberOfTimesChosen;
+            student.IsPresent = IsPresent;
 
-            if (SelectedStudent.Id == Guid.Empty)
+            SelectedStudent = student;
+
+            if (SelectedStudent.Id.Equals(Guid.Empty))
             {
                 await studentService.Add(SelectedStudent);
             }
@@ -163,10 +180,5 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
 
         });
 
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
-        {
-            SelectedStudent = query[nameof(SelectedStudent)] as Student;
-            OnPropertyChanged(nameof(SelectedStudent));
-        }
     }
 }
