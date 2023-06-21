@@ -52,6 +52,13 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
         });
 
+        public ICommand ChooseStudentCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync($"{nameof(RoulettePage)}");
+        });
+
+
+
 
 
     }

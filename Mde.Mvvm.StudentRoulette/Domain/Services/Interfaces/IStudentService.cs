@@ -8,5 +8,6 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces
         public Task<ICollection<Student>> GetAll();
         public Task<Student> Add(Student student);
         public Task<Student> Update(Student student);
+        public Task<Student> ChooseRandom();
     }
 }

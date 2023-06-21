@@ -82,5 +82,23 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
             string serializedStudents = JsonSerializer.Serialize(students);
             await File.WriteAllTextAsync(targetFile, serializedStudents);
         }
+
+        public async Task<Student> ChooseRandom()
+        {
+            var students = (await GetAll())
+                .Where(student => student.IsPresent)
+                .ToList();
+
+            if (students.Count == 0) return null;
+
+            Random random = new Random();
+            int randomIndex = random.Next(0, students.Count);
+
+            Student chosenStudent = students[randomIndex];
+            chosenStudent.TimesChosen++;
+
+            await WriteStudents(students);
+            return chosenStudent;
+        }
     }
 }

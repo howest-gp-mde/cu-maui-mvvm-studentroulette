@@ -74,7 +74,7 @@
                     Text="🎲"
                     FontSize="Medium"
                     CornerRadius="50"
-                    Command="{Binding CreateStudentCommand}">
+                    Command="{Binding ChooseStudentCommand}">
                     <Button.Shadow>
                         <Shadow Brush="{StaticResource Gray300}"
                                 Offset="10,10"
