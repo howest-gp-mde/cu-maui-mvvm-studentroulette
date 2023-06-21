@@ -37,7 +37,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                     FirstName = default;
                     MiddleName = default;
                     LastName = default;
-                    Birthday = default;
+                    Birthday = DateTime.Now;
                 }
             }
         }
