@@ -31,7 +31,7 @@ public static class MauiProgram
 		Routing.RegisterRoute(nameof(StudentFormPage), typeof(StudentFormPage));
 		Routing.RegisterRoute(nameof(RoulettePage), typeof(RoulettePage));
 
-		builder.Services.AddTransient<IStudentService, JsonStudentService>();
+		builder.Services.AddTransient<IStudentService, MockStudentService>();
 
 		return builder.Build();
 	}
