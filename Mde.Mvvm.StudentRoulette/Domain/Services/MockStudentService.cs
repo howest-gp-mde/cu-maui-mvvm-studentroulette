@@ -49,10 +49,15 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
         {
             if (students.Count == 0) return null;
 
-            Random random = new Random();
-            int randomIndex = random.Next(0, students.Count);
+            var presentStudents = 
+                students
+                .Where(student => student.IsPresent)
+                .ToList();
 
-            Student chosenStudent = students[randomIndex];
+            Random random = new Random();
+            int randomIndex = random.Next(0, presentStudents.Count);
+
+            Student chosenStudent = presentStudents[randomIndex];
             chosenStudent.TimesChosen++;
 
             return Task.FromResult(chosenStudent);

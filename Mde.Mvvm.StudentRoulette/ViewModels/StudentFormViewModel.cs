@@ -19,7 +19,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 //Sync Bindable Properties with incoming student
                 if (selectedStudent != null)
                 {
-                    PageTitle = "Edit friend";
+                    PageTitle = "Edit student";
                     Mantra = selectedStudent.Mantra;
                     NumberOfTimesChosen = selectedStudent.TimesChosen;
                     IsPresent = selectedStudent.IsPresent;
@@ -30,7 +30,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
                 }
                 else
                 {
-                    PageTitle = "Add friend";
+                    PageTitle = "Add student";
                     Mantra = default;
                     NumberOfTimesChosen = default;
                     IsPresent = default;
