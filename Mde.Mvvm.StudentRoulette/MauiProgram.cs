@@ -1,4 +1,10 @@
-﻿namespace Mde.Mvvm.StudentRoulette;
+﻿using Mde.Mvvm.StudentRoulette.Domain.Services;
+using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
+using Mde.Mvvm.StudentRoulette.Pages;
+using Mde.Mvvm.StudentRoulette.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Mde.Mvvm.StudentRoulette;
 
 public static class MauiProgram
 {
@@ -12,6 +18,20 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddTransient<StudentFormPage>();
+		builder.Services.AddTransient<StudentFormViewModel>();
+		
+		builder.Services.AddTransient<StudentListPage>();
+		builder.Services.AddTransient<StudentListViewModel>();
+
+		builder.Services.AddTransient<RoulettePage>();
+		builder.Services.AddTransient<RouletteViewModel>();
+
+		Routing.RegisterRoute(nameof(StudentFormPage), typeof(StudentFormPage));
+		Routing.RegisterRoute(nameof(RoulettePage), typeof(RoulettePage));
+
+		builder.Services.AddTransient<IStudentService, MockStudentService>();
 
 		return builder.Build();
 	}

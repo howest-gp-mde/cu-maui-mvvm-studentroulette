@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Mde.Mvvm.StudentRoulette.Domain.Models"
+    xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
+    x:Name="page"
+    Title="Students"
+    x:DataType="viewmodels:StudentListViewModel">
+
+    <AbsoluteLayout>
+        <ListView AbsoluteLayout.LayoutFlags="SizeProportional" 
+                             AbsoluteLayout.LayoutBounds="0,0,1,1"
+            x:Name="lstStudents"
+            x:DataType="models:Student"
+            HasUnevenRows="True"
+            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}"
+            ItemTapped="lstStudents_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout>
+                            <Grid Padding="{StaticResource DefaultThickness}" ColumnDefinitions="40, *">
+                                <BoxView
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource StatusIndicator}"
+                                    Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}" />
+                                <VerticalStackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FullName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding TimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Style="{StaticResource Accent}" Text="{Binding Mantra}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <VerticalStackLayout AbsoluteLayout.LayoutFlags="SizeProportional"
+                             AbsoluteLayout.LayoutBounds="0,0,.95,.95"
+                             HorizontalOptions="End"
+                             VerticalOptions="End"
+                             Spacing="{StaticResource DefaultSpacing}">
+
+            <Button WidthRequest="50" HeightRequest="50"
+                    Text="+"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    CornerRadius="50"
+                    Command="{Binding CreateStudentCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="{StaticResource Gray300}"
+                                Offset="10,10"
+                                Radius="1"
+                                Opacity="0.75" />
+                    </Button.Shadow>
+            </Button>
+
+            <Button WidthRequest="50" HeightRequest="50"
+                    Text="🎲"
+                    FontSize="Medium"
+                    CornerRadius="50"
+                    Command="{Binding ChooseStudentCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="{StaticResource Gray300}"
+                                Offset="10,10"
+                                Radius="1"
+                                Opacity="0.75" />
+                    </Button.Shadow>
+            </Button>
+        </VerticalStackLayout>
+
+
+
+    </AbsoluteLayout>
+
+</ContentPage>
