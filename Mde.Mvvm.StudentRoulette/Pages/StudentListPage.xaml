@@ -10,13 +10,14 @@
     x:DataType="viewmodels:StudentListViewModel">
 
     <AbsoluteLayout>
-        <ListView AbsoluteLayout.LayoutFlags="SizeProportional" 
-                             AbsoluteLayout.LayoutBounds="0,0,1,1"
+        <ListView
             x:Name="lstStudents"
             x:DataType="models:Student"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="SizeProportional"
             HasUnevenRows="True"
-            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}"
-            ItemTapped="lstStudents_ItemTapped">
+            ItemTapped="lstStudents_ItemTapped"
+            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -50,42 +51,46 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <VerticalStackLayout AbsoluteLayout.LayoutFlags="SizeProportional"
-                             AbsoluteLayout.LayoutBounds="0,0,.95,.95"
-                             HorizontalOptions="End"
-                             VerticalOptions="End"
-                             Spacing="{StaticResource DefaultSpacing}">
+        <!--  Buttons floating over the ListView  -->
+        <VerticalStackLayout
+            AbsoluteLayout.LayoutBounds="0,0,.95,.95"
+            AbsoluteLayout.LayoutFlags="SizeProportional"
+            HorizontalOptions="End"
+            Spacing="{StaticResource DefaultSpacing}"
+            VerticalOptions="End">
 
-            <Button WidthRequest="50" HeightRequest="50"
-                    Text="+"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    CornerRadius="50"
-                    Command="{Binding CreateStudentCommand}">
-                    <Button.Shadow>
-                        <Shadow Brush="{StaticResource Gray300}"
-                                Offset="10,10"
-                                Radius="1"
-                                Opacity="0.75" />
-                    </Button.Shadow>
+            <Button
+                Command="{Binding CreateStudentCommand}"
+                CornerRadius="50"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HeightRequest="50"
+                Text="+"
+                WidthRequest="50">
+                <Button.Shadow>
+                    <Shadow
+                        Brush="{StaticResource Gray300}"
+                        Opacity="0.75"
+                        Radius="1"
+                        Offset="10,10" />
+                </Button.Shadow>
             </Button>
 
-            <Button WidthRequest="50" HeightRequest="50"
-                    Text="🎲"
-                    FontSize="Medium"
-                    CornerRadius="50"
-                    Command="{Binding ChooseStudentCommand}">
-                    <Button.Shadow>
-                        <Shadow Brush="{StaticResource Gray300}"
-                                Offset="10,10"
-                                Radius="1"
-                                Opacity="0.75" />
-                    </Button.Shadow>
+            <Button
+                Command="{Binding ChooseStudentCommand}"
+                CornerRadius="50"
+                FontSize="Medium"
+                HeightRequest="50"
+                Text="🎲"
+                WidthRequest="50">
+                <Button.Shadow>
+                    <Shadow
+                        Brush="{StaticResource Gray300}"
+                        Opacity="0.75"
+                        Radius="1"
+                        Offset="10,10" />
+                </Button.Shadow>
             </Button>
         </VerticalStackLayout>
-
-
-
     </AbsoluteLayout>
-
 </ContentPage>

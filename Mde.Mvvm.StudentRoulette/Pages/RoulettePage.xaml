@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
              x:Class="Mde.Mvvm.StudentRoulette.Pages.RoulettePage"
-             Title="Roulette"
-             x:DataType="viewmodels:RouletteViewModel">
+             x:DataType="viewmodels:RouletteViewModel"
+             Title="Roulette">
     <Grid ColumnDefinitions="*" RowDefinitions="*">
         <Label 
             Grid.Row="0" Grid.Column="0"

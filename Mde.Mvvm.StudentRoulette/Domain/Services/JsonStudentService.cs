@@ -13,7 +13,7 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
 
             string savedSerialized = await File.ReadAllTextAsync(targetFile);
             List<Student> savedStudents = JsonSerializer.Deserialize<List<Student>>(savedSerialized);
-            
+
             return savedStudents;
         }
 
@@ -30,7 +30,7 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
         public async Task<Student> Add(Student student)
         {
             List<Student> students = (await GetAll()).ToList();
-            bool studentExists = students.Any(search =>search.Id == student.Id);
+            bool studentExists = students.Any(search => search.Id == student.Id);
 
             if (!studentExists)
             {

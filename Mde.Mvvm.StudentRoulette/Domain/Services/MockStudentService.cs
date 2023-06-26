@@ -35,7 +35,7 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
         {
             Student existingStudent = await GetById(student.Id);
 
-            if (existingStudent is null) 
+            if (existingStudent is null)
                 throw new ArgumentException("The student you're trying to update does not have a correct id.");
 
             student.Id = existingStudent.Id;
@@ -49,7 +49,7 @@ namespace Mde.Mvvm.StudentRoulette.Domain.Services
         {
             if (students.Count == 0) return null;
 
-            var presentStudents = 
+            var presentStudents =
                 students
                 .Where(student => student.IsPresent)
                 .ToList();

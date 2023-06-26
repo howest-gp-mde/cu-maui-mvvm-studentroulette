@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mde.Mvvm.StudentRoulette.Domain.Models
+﻿namespace Mde.Mvvm.StudentRoulette.Domain.Models
 {
     public class Student
     {

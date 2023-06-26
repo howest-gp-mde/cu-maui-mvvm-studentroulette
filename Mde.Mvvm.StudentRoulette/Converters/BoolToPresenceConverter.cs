@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Resources;
 
 namespace Mde.Mvvm.StudentRoulette.Converters
 {
