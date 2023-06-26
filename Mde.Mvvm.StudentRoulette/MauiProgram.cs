@@ -2,7 +2,6 @@
 using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
 using Mde.Mvvm.StudentRoulette.Pages;
 using Mde.Mvvm.StudentRoulette.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Mde.Mvvm.StudentRoulette;
 
@@ -31,7 +30,7 @@ public static class MauiProgram
 		Routing.RegisterRoute(nameof(StudentFormPage), typeof(StudentFormPage));
 		Routing.RegisterRoute(nameof(RoulettePage), typeof(RoulettePage));
 
-		builder.Services.AddTransient<IStudentService, MockStudentService>();
+		builder.Services.AddTransient<IStudentService, JsonStudentService>();
 
 		return builder.Build();
 	}
