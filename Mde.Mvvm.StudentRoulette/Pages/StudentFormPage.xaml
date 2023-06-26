@@ -31,7 +31,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding FullName}" />
-                                <Span Text=" " />
+                                <Span Text=" - " />
                                 <Span Text="{Binding NumberOfTimesChosen}" />
                             </FormattedString>
                         </Label.FormattedText>
