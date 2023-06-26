@@ -24,14 +24,15 @@
                     Grid.Column="0"
                     HorizontalOptions="Start"
                     Style="{StaticResource StatusIndicator}"
-                    Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}" />
+                    Color="{StaticResource Primary}"
+                    IsVisible="{Binding IsPresent}" />
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1">
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding FullName}" />
                                 <Span Text=" " />
-                                <Span Text="{Binding NumberOfTimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}" />
+                                <Span Text="{Binding NumberOfTimesChosen}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

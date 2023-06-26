@@ -27,7 +27,8 @@
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
                                     Style="{StaticResource StatusIndicator}"
-                                    Color="{Binding IsPresent, Converter={StaticResource BoolToPresenceConverter}}" />
+                                    Color="{StaticResource Primary}"
+                                    IsVisible="{Binding IsPresent}" />
                                 <VerticalStackLayout
                                     Grid.Row="0"
                                     Grid.Column="1"
@@ -36,8 +37,8 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding FullName}" />
-                                                <Span Text=" " />
-                                                <Span Text="{Binding TimesChosen, Converter={StaticResource IntToTimesChosenStringConverter}}" />
+                                                <Span Text=" - " />
+                                                <Span Text="{Binding TimesChosen}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
