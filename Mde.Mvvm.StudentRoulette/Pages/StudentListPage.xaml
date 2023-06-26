@@ -12,14 +12,13 @@
     <AbsoluteLayout>
         <ListView
             x:Name="lstStudents"
-            x:DataType="models:Student"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="SizeProportional"
             HasUnevenRows="True"
             ItemTapped="lstStudents_ItemTapped"
-            ItemsSource="{Binding BindingContext.Students, Source={x:Reference page}}">
+            ItemsSource="{Binding Students}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Student">
                     <ViewCell>
                         <VerticalStackLayout>
                             <Grid Padding="{StaticResource DefaultThickness}" ColumnDefinitions="40, *">
