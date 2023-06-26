@@ -42,7 +42,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
         });
 
-        public ICommand CreateStudentCommand => new Command<Student>(async (student) =>
+        public ICommand CreateStudentCommand => new Command(async () =>
         {
             var navigationParameter = new Dictionary<string, object>
             {
