@@ -5,43 +5,8 @@ using System.Windows.Input;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
-    [QueryProperty(nameof(SelectedStudent), nameof(SelectedStudent))]
     public partial class StudentFormViewModel : ObservableObject
     {
-        private Student selectedStudent;
-        public Student SelectedStudent
-        {
-            get { return selectedStudent; }
-            set 
-            {
-                selectedStudent = value;
-
-                //Sync Bindable Properties with incoming student
-                if (selectedStudent != null)
-                {
-                    PageTitle = "Edit student";
-                    Mantra = selectedStudent.Mantra;
-                    NumberOfTimesChosen = selectedStudent.TimesChosen;
-                    IsPresent = selectedStudent.IsPresent;
-                    FirstName = selectedStudent.FirstName;
-                    MiddleName = selectedStudent.MiddleName;
-                    LastName = selectedStudent.LastName;
-                    Birthday = selectedStudent.Birthday;
-                }
-                else
-                {
-                    PageTitle = "Add student";
-                    Mantra = default;
-                    NumberOfTimesChosen = default;
-                    IsPresent = default;
-                    FirstName = default;
-                    MiddleName = default;
-                    LastName = default;
-                    Birthday = DateTime.Now;
-                }
-            }
-        }
-
         private string pageTitle;
         public string PageTitle
         {
@@ -160,16 +125,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         public ICommand SaveCommand => new Command(async () =>
         {
             //todo: validation
-            Student student;
-
-            if (SelectedStudent == null)
-            {
-                student = new Student();
-            }
-            else
-            {
-                student = SelectedStudent;
-            }
+            Student student = new Student();
 
             student.FirstName = FirstName;
             student.MiddleName = MiddleName;
@@ -179,14 +135,7 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             student.TimesChosen = NumberOfTimesChosen;
             student.IsPresent = IsPresent;
 
-            if (student.Id.Equals(Guid.Empty))
-            {
-                await studentService.Add(student);
-            }
-            else
-            {
-                await studentService.Update(student);
-            }
+            await studentService.Add(student);
             
             await Shell.Current.GoToAsync("//StudentListPage");
 

@@ -32,24 +32,9 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             Students = new ObservableCollection<Student>(students);
         });
 
-        public ICommand EditStudentCommand => new Command<Student>(async (student) =>
-        {
-            var navigationParameter = new Dictionary<string, object>
-            {
-                { nameof(StudentFormViewModel.SelectedStudent), student }
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
-        });
-
         public ICommand CreateStudentCommand => new Command(async () =>
         {
-            var navigationParameter = new Dictionary<string, object>
-            {
-                { nameof(StudentFormViewModel.SelectedStudent), null }
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}", navigationParameter);
+            await Shell.Current.GoToAsync($"{nameof(StudentFormPage)}");
         });
 
         public ICommand ChooseStudentCommand => new Command(async () =>

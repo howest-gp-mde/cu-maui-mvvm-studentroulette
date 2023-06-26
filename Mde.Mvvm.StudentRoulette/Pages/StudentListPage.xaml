@@ -15,7 +15,6 @@
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="SizeProportional"
             HasUnevenRows="True"
-            ItemTapped="lstStudents_ItemTapped"
             ItemsSource="{Binding Students}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Student">
