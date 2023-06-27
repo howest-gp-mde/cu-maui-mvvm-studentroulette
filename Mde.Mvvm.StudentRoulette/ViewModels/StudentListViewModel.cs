@@ -41,10 +41,5 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(RoulettePage)}");
         });
-
-
-
-
-
     }
 }

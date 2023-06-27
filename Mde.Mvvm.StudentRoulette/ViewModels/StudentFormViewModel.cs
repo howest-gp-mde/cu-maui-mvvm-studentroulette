@@ -7,16 +7,6 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
     public partial class StudentFormViewModel : ObservableObject
     {
-        private string pageTitle;
-        public string PageTitle
-        {
-            get { return pageTitle; }
-            set
-            {
-                SetProperty(ref pageTitle, value);
-            }
-        }
-
         /* 1. If the property has changed, SetProperty will notify the changes to the View */
         private string mantra;
         public string Mantra

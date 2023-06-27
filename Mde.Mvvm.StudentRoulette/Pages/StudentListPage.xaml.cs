@@ -17,4 +17,9 @@ public partial class StudentListPage : ContentPage
         viewmodel.RefreshListCommand?.Execute(null);
         base.OnAppearing();
     }
+
+    private void lstStudents_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+
+    }
 }
