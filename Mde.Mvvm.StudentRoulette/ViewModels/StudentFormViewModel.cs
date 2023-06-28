@@ -126,8 +126,6 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
             student.IsPresent = IsPresent;
 
             await studentService.Add(student);
-            
-            await Shell.Current.GoToAsync("//StudentListPage");
 
         });
 
