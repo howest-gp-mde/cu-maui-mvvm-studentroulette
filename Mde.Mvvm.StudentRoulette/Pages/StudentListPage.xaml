@@ -76,7 +76,6 @@
             </Button>
 
             <Button
-                Command="{Binding ChooseStudentCommand}"
                 CornerRadius="50"
                 FontSize="Medium"
                 HeightRequest="50"
