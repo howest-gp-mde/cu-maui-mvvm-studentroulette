@@ -3,9 +3,7 @@
     x:Class="Mde.Mvvm.StudentRoulette.Pages.StudentFormPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodels="clr-namespace:Mde.Mvvm.StudentRoulette.ViewModels"
-    Title="Add student"
-    x:DataType="viewmodels:StudentFormViewModel">
+    Title="Add student">
 
     <Grid
         ColumnDefinitions="*"
@@ -25,18 +23,18 @@
                     HorizontalOptions="Start"
                     Style="{StaticResource StatusIndicator}"
                     Color="{StaticResource Primary}"
-                    IsVisible="{Binding IsPresent}" />
+                    IsVisible="True" />
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1">
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding FullName}" />
+                                <Span Text="Jane Roe" />
                                 <Span Text=" - " />
-                                <Span Text="{Binding NumberOfTimesChosen}" />
+                                <Span Text="3" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource Accent}" Text="{Binding Mantra}" />
+                    <Label Style="{StaticResource Accent}" Text="Forget the mistake. Remember the lesson." />
                 </VerticalStackLayout>
             </Grid>
         </VerticalStackLayout>
@@ -56,7 +54,7 @@
                             HeightRequest="75"
                             HorizontalTextAlignment="Center"
                             Placeholder="Type the students mantra when being chosen here. E.g.: &quot;I&apos;ve always known I&apos;m the chosen one!&quot;"
-                            Text="{Binding Mantra}" />
+                            Text="Forget the mistake. Remember the lesson." />
                     </VerticalStackLayout>
 
                     <VerticalStackLayout
@@ -68,12 +66,12 @@
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"
                             Placeholder="2 (times)"
-                            Text="{Binding NumberOfTimesChosen}" />
+                            Text="3" />
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                         <Label Style="{StaticResource FormLabelRight}" Text="currently present" />
-                        <CheckBox HorizontalOptions="End" IsChecked="{Binding IsPresent}" />
+                        <CheckBox HorizontalOptions="End" IsChecked="True" />
                     </VerticalStackLayout>
                 </Grid>
 
@@ -89,7 +87,7 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         Placeholder="John"
-                        Text="{Binding FirstName}" />
+                        Text="Jane" />
 
                     <Label
                         Grid.Row="1"
@@ -100,7 +98,7 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Placeholder="Deere"
-                        Text="{Binding MiddleName}" />
+                        Text="" />
 
                     <Label
                         Grid.Row="2"
@@ -111,7 +109,7 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         Placeholder="Doe"
-                        Text="{Binding LastName}" />
+                        Text="Roe" />
 
                     <Label
                         Grid.Row="3"
@@ -120,8 +118,7 @@
                         Text="birthday" />
                     <DatePicker
                         Grid.Row="3"
-                        Grid.Column="1"
-                        Date="{Binding Birthday}" />
+                        Grid.Column="1" />
                 </Grid>
 
                 <Button
