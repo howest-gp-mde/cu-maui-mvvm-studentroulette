@@ -111,23 +111,5 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         {
             this.studentService = studentService;
         }
-
-        public ICommand SaveCommand => new Command(async () =>
-        {
-            //todo: validation
-            Student student = new Student();
-
-            student.FirstName = FirstName;
-            student.MiddleName = MiddleName;
-            student.LastName = LastName;
-            student.Birthday = Birthday;
-            student.Mantra = Mantra;
-            student.TimesChosen = NumberOfTimesChosen;
-            student.IsPresent = IsPresent;
-
-            await studentService.Add(student);
-
-        });
-
     }
 }

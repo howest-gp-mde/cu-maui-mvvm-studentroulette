@@ -126,7 +126,6 @@
 
                 <Button
                     Margin="{StaticResource DefaultThickness}"
-                    Command="{Binding SaveCommand}"
                     Text="Save" />
             </VerticalStackLayout>
         </ScrollView>
