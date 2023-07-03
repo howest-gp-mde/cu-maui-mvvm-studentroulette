@@ -1,7 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Mde.Mvvm.StudentRoulette.Domain.Models;
-using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
-using System.Windows.Input;
 
 namespace Mde.Mvvm.StudentRoulette.ViewModels
 {
@@ -81,7 +78,6 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
         }
 
         private DateTime birthday;
-        private readonly IStudentService studentService;
 
         public DateTime Birthday
         {
@@ -105,11 +101,6 @@ namespace Mde.Mvvm.StudentRoulette.ViewModels
 
                 return string.Join(" ", namepieces);
             }
-        }
-
-        public StudentFormViewModel(IStudentService studentService)
-        {
-            this.studentService = studentService;
         }
     }
 }

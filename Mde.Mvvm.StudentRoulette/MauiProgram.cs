@@ -1,6 +1,4 @@
-﻿using Mde.Mvvm.StudentRoulette.Domain.Services;
-using Mde.Mvvm.StudentRoulette.Domain.Services.Interfaces;
-using Mde.Mvvm.StudentRoulette.Pages;
+﻿using Mde.Mvvm.StudentRoulette.Pages;
 using Mde.Mvvm.StudentRoulette.ViewModels;
 
 namespace Mde.Mvvm.StudentRoulette;
@@ -20,8 +18,6 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<StudentFormPage>();
 		builder.Services.AddTransient<StudentFormViewModel>();
-
-		builder.Services.AddTransient<IStudentService, JsonStudentService>();
 
 		return builder.Build();
 	}
